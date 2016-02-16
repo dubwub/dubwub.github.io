@@ -1,0 +1,36 @@
+//https://color.adobe.com/infographic-color-theme-7604550
+
+//Google fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+
+//font variables
+$roboto-slab: 'Roboto Slab', serif;
+
+//colors
+$pink: #DB4C62;
+$navy: #2B3541;
+$baby_blue: #57A4BD;
+$white: #E6E6E4;
+$gold: #F6A516;
+
+//styles
+body {
+	font-family: $roboto-slab;
+	font-weight: normal;
+	font-size: 48px;
+	background-color: $navy;
+}
+
+.line {
+	visibility: invisible;
+	&:hover{
+		visibility: visible;
+		color: $pink;
+	}
+}
+
+.main_letter {
+	font-weight: bold;
+	color: $gold;
+	visibility: visible;
+}

@@ -1,3 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+body {
+  font-family: "Roboto Slab", serif;
+  font-weight: normal;
+  font-size: 48px;
+  background-color: #2B3541; }
 
+.line {
+  visibility: invisible; }
+  .line:hover {
+    visibility: visible;
+    color: #DB4C62; }
+
+.main_letter {
+  font-weight: bold;
+  color: #F6A516;
+  visibility: visible; }
 
 /*# sourceMappingURL=main.css.map */
