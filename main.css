@@ -6,7 +6,7 @@ body {
   background-color: #2B3541; }
 
 .line {
-  visibility: invisible;
+  visibility: hidden;
   width: 100%; }
   .line:hover {
     visibility: visible;
@@ -15,7 +15,20 @@ body {
 .main_letter {
   font-weight: bold;
   color: #F6A516;
-  visibility: visible; }
+  visibility: visible;
+  position: relative; }
+  .main_letter.d {
+    right: 150px; }
+  .main_letter.a {
+    right: 100px; }
+  .main_letter.r {
+    right: 50px; }
+  .main_letter.w {
+    left: 0px; }
+  .main_letter.i {
+    left: 50px; }
+  .main_letter.n {
+    left: 100px; }
 
 .footer {
   color: #E6E6E4;

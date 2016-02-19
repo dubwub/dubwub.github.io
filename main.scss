@@ -22,7 +22,7 @@ body {
 }
 
 .line {
-	visibility: invisible;
+	visibility: hidden;
 	&:hover{
 		visibility: visible;
 		color: $pink;
@@ -34,6 +34,27 @@ body {
 	font-weight: bold;
 	color: $gold;
 	visibility: visible;
+	position: relative;
+
+	&.d{
+		right: 150px;
+	}
+	&.a{
+		right: 100px;
+	}
+	&.r{
+		right: 50px;	
+	}
+	&.w{
+		left: 0px;
+	}
+	&.i{
+		left: 50px;
+	}
+	&.n{
+		left: 100px;
+	}
+
 }
 
 .footer {
