@@ -27,10 +27,17 @@ body {
 		visibility: visible;
 		color: $pink;
 	}
+	width: 100%;
 }
 
 .main_letter {
 	font-weight: bold;
 	color: $gold;
 	visibility: visible;
+}
+
+.footer {
+	color: $white;
+	font-size: 18px;
+	text-align: center;
 }

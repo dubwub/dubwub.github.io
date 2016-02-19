@@ -6,7 +6,8 @@ body {
   background-color: #2B3541; }
 
 .line {
-  visibility: invisible; }
+  visibility: invisible;
+  width: 100%; }
   .line:hover {
     visibility: visible;
     color: #DB4C62; }
@@ -15,5 +16,10 @@ body {
   font-weight: bold;
   color: #F6A516;
   visibility: visible; }
+
+.footer {
+  color: #E6E6E4;
+  font-size: 18px;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
