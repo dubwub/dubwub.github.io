@@ -5,30 +5,35 @@ body {
   font-size: 48px;
   background-color: #2B3541; }
 
-.line {
-  visibility: hidden;
-  width: 100%; }
-  .line:hover {
-    visibility: visible;
-    color: #DB4C62; }
+/*#outter{
+width: 400px;
+padding: 0;
+margin: 0 auto;
+}
+#div1, #div2{
+width: 50%;
+float: left;
+text-align:center;}*/
+table.nav_bar {
+  width: 30%;
+  margin-left: 10%;
+  align: left; }
 
-.main_letter {
+td.nav_bar_elem {
+  align: center; }
+
+.nav_bar_txt {
   font-weight: bold;
-  color: #F6A516;
-  visibility: visible;
-  position: relative; }
-  .main_letter.d {
-    right: 150px; }
-  .main_letter.a {
-    right: 100px; }
-  .main_letter.r {
-    right: 50px; }
-  .main_letter.w {
-    left: 0px; }
-  .main_letter.i {
-    left: 50px; }
-  .main_letter.n {
-    left: 100px; }
+  font-size: 30px; }
+  .nav_bar_txt.darwin {
+    color: #F6A516;
+    position: relative;
+    align: center; }
+  .nav_bar_txt.other {
+    float: left;
+    color: #57A4BD;
+    padding-left: 30px;
+    padding-right: 30px; }
 
 .footer {
   color: #E6E6E4;
