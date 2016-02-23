@@ -22,14 +22,14 @@ body {
 }
 
 table.nav_bar {
-	width: 30%;
+	width: 20%;
 	height: 100%;
 	margin-left: 5%;
 	margin-right: 5%;
 	border-collapse: collapse;
 	vertical-align: center;
 	color: $baby-blue;
-
+	
 	b{
 		color: $gold;
 	}
@@ -40,6 +40,13 @@ table.nav_bar {
 		&.left{
 			text-align:right;
 		}
+	}
+
+	tr{
+		&:hover{
+			color: $gold;
+			/*font-weight:bold;*/
+		}	
 	}
 }
 

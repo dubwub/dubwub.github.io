@@ -6,7 +6,7 @@ body {
   background-color: #2B3541; }
 
 table.nav_bar {
-  width: 30%;
+  width: 20%;
   height: 100%;
   margin-left: 5%;
   margin-right: 5%;
@@ -20,6 +20,9 @@ table.nav_bar {
     border-spacing: 0; }
     table.nav_bar td.left {
       text-align: right; }
+  table.nav_bar tr:hover {
+    color: #F6A516;
+    /*font-weight:bold;*/ }
 
 .footer {
   color: #E6E6E4;
