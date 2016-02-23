@@ -21,42 +21,25 @@ body {
 	background-color: $navy;
 }
 
-
-/*#outter{
-width: 400px;
-padding: 0;
-margin: 0 auto;
-}
-#div1, #div2{
-width: 50%;
-float: left;
-text-align:center;}*/
-
 table.nav_bar {
 	width: 30%;
-	margin-left: 10%;
-	align: left;
-}
+	height: 100%;
+	margin-left: 5%;
+	margin-right: 5%;
+	border-collapse: collapse;
+	vertical-align: center;
+	color: $baby-blue;
 
-td.nav_bar_elem {
-	align: center;
-}
-
-.nav_bar_txt {
-	font-weight: bold;
-	font-size: 30px;
-	
-	&.darwin{
+	b{
 		color: $gold;
-		position: relative;
-		align: center;
 	}
 
-	&.other{
-		float: left;
-		color: $baby_blue;
-		padding-left: 30px;
-		padding-right: 30px;
+	td{
+		padding:0;
+		border-spacing: 0;
+		&.left{
+			text-align:right;
+		}
 	}
 }
 
