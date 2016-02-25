@@ -7,7 +7,7 @@ body {
   font-weight: normal;
   font-size: 48px;
   background-color: #2B3541;
-  overflow: hidden; }
+  /*overflow: hidden;*/ }
 
 table.nav_bar {
   width: 20%;
@@ -38,29 +38,6 @@ table.nav_bar {
 .panel {
   width: 100%;
   height: 1000px;
-  z-index: 0;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition: -webkit-transform 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
-a[id="about"]:target ~ .main article.panel {
-  -webkit-transform: translateY(0px);
-  transform: translateY(0px); }
-
-a[id="resume"]:target ~ .main article.panel {
-  -webkit-transform: translateY(-500px);
-  transform: translateY(-500px); }
-
-a[id="work"]:target ~ .main article.panel {
-  -webkit-transform: translateY(-1000px);
-  transform: translateY(-1000px); }
-
-.footer {
-  color: #E6E6E4;
-  font-size: 18px;
-  text-align: center; }
+  display: block; }
 
 /*# sourceMappingURL=main.css.map */
