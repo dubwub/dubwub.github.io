@@ -1,18 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+html {
+  height: 100%; }
+
 body {
   font-family: "Roboto Slab", serif;
   font-weight: normal;
   font-size: 48px;
-  background-color: #2B3541; }
+  background-color: #2B3541;
+  overflow: hidden; }
 
 table.nav_bar {
   width: 20%;
-  height: 100%;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 50%;
   border-collapse: collapse;
-  vertical-align: center;
-  color: #57A4BD; }
+  color: #57A4BD;
+  position: fixed; }
   table.nav_bar b {
     color: #F6A516; }
   table.nav_bar td {
@@ -23,6 +29,34 @@ table.nav_bar {
   table.nav_bar tr:hover {
     color: #F6A516;
     /*font-weight:bold;*/ }
+
+.main {
+  margin-left: 30%;
+  height: 100%;
+  color: #DB4C62; }
+
+.panel {
+  width: 100%;
+  height: 1000px;
+  z-index: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+a[id="about"]:target ~ .main article.panel {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px); }
+
+a[id="resume"]:target ~ .main article.panel {
+  -webkit-transform: translateY(-500px);
+  transform: translateY(-500px); }
+
+a[id="work"]:target ~ .main article.panel {
+  -webkit-transform: translateY(-1000px);
+  transform: translateY(-1000px); }
 
 .footer {
   color: #E6E6E4;
