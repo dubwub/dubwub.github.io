@@ -2,14 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="main.css">
-<script src="jquery-1.12.1.js"></script>
-<script type="text/javascript">
- //used for smooth jquery scrolling, found here http://stackoverflow.com/questions/8579643/simple-jquery-scroll-to-anchor-up-or-down-the-page
-function scrollToAnchor(aid){
-	var aTag = $("a[name='"+ aid +"']");
-	$('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-</script>
+<script src="d3.js" charset="utf-8"></script>
 <title>darwin ding's website</title>
 </head>
 <body>
@@ -39,3 +32,20 @@ function scrollToAnchor(aid){
 </a>
 </section>
 </body>
+
+<script type="text/javascript">
+// simple scroll to anchor function pair that does a nice smooth d3 scroll to anchor points
+function scrollToAnchor(id) {
+	d3.transition()
+    .duration(500)
+    .tween("scroll", scrollTween((window.pageYOffset || document.documentElement.scrollTop) + 
+    	document.getElementById(id).getBoundingClientRect().top)); // bounding client rect is relative to screen pos
+}
+
+function scrollTween(offset) {
+  return function() {
+    var i = d3.interpolateNumber(window.pageYOffset || document.documentElement.scrollTop, offset);
+    return function(t) { scrollTo(i(window.pageYOffset), i(t)); };
+  };
+}
+</script>
