@@ -1,61 +1,57 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 html {
+  position: absolute;
+  width: 100%;
   height: 100%; }
 
 body {
   font-family: "Roboto Slab", serif;
   font-weight: normal;
-  font-size: 48px;
-  background-color: #2B3541;
+  font-size: 3vw;
   /*overflow: hidden;*/ }
 
 table.nav_bar {
-  width: 20%;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  top: 25%;
   height: 50%;
+  width: 30%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+  padding: 0px;
   display: inline-block;
-  border-collapse: collapse;
-  color: #57A4BD;
-  position: fixed; }
-  table.nav_bar b {
-    color: #F6A516; }
+  position: fixed;
+  border-collapse: collapse; }
   table.nav_bar td {
     padding: 0;
     border-spacing: 0; }
     table.nav_bar td.left {
       text-align: right; }
   table.nav_bar tr:hover {
-    color: #F6A516;
     /*font-weight:bold;*/ }
 
 .main {
-  float: right;
   height: 100%;
-  margin-left: 30%;
+  width: 50%;
   margin-right: 5%;
-  display: inline-block;
-  clear: left; }
+  margin-left: 5%;
+  float: right;
+  position: relative;
+  display: inline-block; }
 
 .panel {
   display: block;
-  padding: 5px;
-  background-color: #34404F;
-  border: 2px solid #34404F;
-  padding: 10px;
-  margin: 10px; }
-  .panel img {
-    float: left;
-    margin-right: 10px;
-    margin-down: 10px; }
+  border: 2px solid black;
+  width: 66.7%;
+  height: 1000px;
+  position: relative;
+  padding-left: 11.1%;
+  padding-top: 11.1%;
+  padding-right: 22.2%;
+  margin-bottom: 10px; }
   .panel h1 {
-    color: #DB4C62; }
+    vertical-align: top;
+    margin: 0px; }
   .panel p {
-    font-size: 20px;
-    color: #E6E6E4; }
-  .panel b {
-    color: #57A4BD; }
+    font-size: 20px; }
 
 /*# sourceMappingURL=main.css.map */
