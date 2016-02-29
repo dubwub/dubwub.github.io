@@ -1,16 +1,22 @@
 //https://color.adobe.com/infographic-color-theme-7604550
 
 //Google fonts
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto|Open+Sans);
 
 //font variables
-$roboto-slab: 'Roboto Slab', serif;
+$font-header: 'Roboto', sans-serif;
+$font-main: 'Open Sans', sans-serif;
 
 //colors
+$color-bg: white;
+$color-text-main: black;
+$color-text-bold1: black;
+$color-text-bold2: black;
+$color-stroke-line: black;
 
-$nav_bar_width: 30%;
-$nav_bar_margin: 5%;
-$main_margin: 5%;
+$nav_bar_width: 27%; // following rule of thirds
+$nav_bar_margin: 3%; // 2 margins on each side
+$main_margin: 3%;
 
 //styles
 
@@ -21,25 +27,37 @@ html {
 }
 
 body {
-	font-family: $roboto-slab;
 	font-weight: normal;
 	font-size: 3vw;
-	/*overflow: hidden;*/
 }
 
-table.nav_bar {
-	top: 25%;
-	height: 50%;
+svg.mainLine { // some of the styling for this is done in the JS, see index.html
+	position:fixed;
+	line {
+		stroke-width: 4px;
+		stroke: $color-stroke-line;
+	}
+}
 
+.nav_bar_div {
+	display: inline-block;
 	width: $nav_bar_width;
+	height: 100%;
 	margin-left: $nav_bar_margin;
 	margin-right: $nav_bar_margin;
 	margin-bottom: 10%;
-	padding: 0px;
-	
-	display:inline-block;
 	position: fixed;
-	
+}
+
+table.nav_bar {
+	position: relative;
+	top: 25%;
+	height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: $font-header;
+ 
+	padding: 0px;
 	border-collapse: collapse;
 	
 	td{
@@ -69,7 +87,7 @@ table.nav_bar {
 
 .panel {
     display:block;
-   	border: 2px solid black;
+   	//border: 2px solid black; // not sure whether to add this or not
    	width: 100% - 11.1% - 22.2%;
    	height: 1000px;
    	position: relative;
@@ -78,12 +96,20 @@ table.nav_bar {
 	padding-right: 22.2%;
 	margin-bottom: 10px;
 
+	/*img {
+		max-width: 100%;
+		height: auto;
+		width: auto\9;
+	}*/
+
     h1 {
+    	font-family: $font-header;
     	vertical-align: top;
-    	margin: 0px;
+    	margin: 10px;
     }
 
 	p {
+		font-family: $font-main;
 		font-size: 20px;	
 	}
 }

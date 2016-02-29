@@ -6,6 +6,7 @@
 <title>darwin ding's website</title>
 </head>
 <body>
+<div class="nav_bar_div">
 <table class="nav_bar">
 	<tr><td /><td><b>d</b></td></tr>
 	<tr onclick="scrollToAnchor('about');"><td /><td><b>a</b>bout</td></tr>
@@ -14,10 +15,11 @@
 	<tr onclick="scrollToAnchor('hobbies');"><td class="left">hobb</td><td><b>i</b>es</td></tr>
 	<tr onclick="scrollToAnchor('contact');"><td class="left">co</td><td><b>n</b>tact</td></tr>
 </table>
+</div>
 <section class="main">
 <div class="panel" name="about" id="about">
 	<h1>about</h1>
-	<img src="./img/darwin.jpg" width="200" height="200"/> <p>Hi! I'm <b>Darwin Ding</b>, a programmer and engineer at Rensselaer Polytechnic Institute originally from Lexington, MA. I specialize in C/C++/Java, but I love learning about new technologies and have experience with a wide variety of tools like NodeJS, D3 and more. When I'm not coding, I'm either picking things up and putting them down, making/eating food, playing piano or smashing.</p>
+	<img src="./img/darwin.jpg" width="200vw" height="200vw"/> <p>Hi! I'm <b>Darwin Ding</b>, a programmer and engineer at Rensselaer Polytechnic Institute originally from Lexington, MA. I specialize in C/C++/Java, but I love learning about new technologies and have experience with a wide variety of tools like NodeJS, D3 and more. When I'm not coding, I'm either picking things up and putting them down, making/eating food, playing piano or smashing.</p>
 </div>
 <div class="panel" name="resume" id="resume">
 	<h1>resume</h1>
@@ -27,7 +29,6 @@
 </div>
 <div class="panel" name="work" id="work">
 	<h1>work</h1>
-
 </div>
 <div class="panel" name="hobbies" id="hobbies">
 	<h1>hobbies</h1>
@@ -55,5 +56,13 @@ function scrollTween(offset) {
     return function(t) { scrollTo(i(window.pageYOffset), i(t)); };
   };
 }
+
+function updateWindow() {
+	d3.select(".mainLine line").attr("y1",window.innerHeight*.1).attr("y2",window.innerHeight*.9);
+}
+
+var svgMainLine = d3.select("body").append("svg").attr("class","mainLine").attr("width", 2).attr("height",window.innerHeight).attr("style","position:fixed; left: 33%;");
+var line = svgMainLine.append("line").attr("x1", 0).attr("y1", "10%").attr("x2",0).attr("y2","90%");
+window.onresize = updateWindow;
 
 </script>
