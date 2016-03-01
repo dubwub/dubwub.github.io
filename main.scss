@@ -6,6 +6,7 @@
 //font variables
 $font-header: 'Roboto', sans-serif;
 $font-main: 'Open Sans', sans-serif;
+$font-h1-size: 4vw;
 
 //colors
 $color-bg: white;
@@ -26,11 +27,6 @@ html {
 	height: 100%;
 }
 
-body {
-	font-weight: normal;
-	font-size: 3vw;
-}
-
 svg.mainLine { // some of the styling for this is done in the JS, see index.html
 	position:fixed;
 	line {
@@ -43,6 +39,7 @@ svg.mainLine { // some of the styling for this is done in the JS, see index.html
 	display: inline-block;
 	width: $nav_bar_width;
 	height: 100%;
+	font-size: $font-h1-size / 1.6;
 	margin-left: $nav_bar_margin;
 	margin-right: $nav_bar_margin;
 	margin-bottom: 10%;
@@ -77,8 +74,8 @@ table.nav_bar {
 
 .main {
 	height: 100%;
-	width: 100% - $nav_bar_margin - $nav_bar_margin - $nav_bar_width - $main_margin - $main_margin;
-	margin-right: $main_margin;
+	width: 100% - $nav_bar_margin - $nav_bar_margin - $nav_bar_width - $main_margin /*- $main_margin*/;
+	//margin-right: $main_margin;
 	margin-left: $main_margin;
 	float:right;
 	position: relative;
@@ -89,27 +86,58 @@ table.nav_bar {
     display:block;
    	//border: 2px solid black; // not sure whether to add this or not
    	width: 100% - 11.1% - 22.2%;
-   	height: 1000px;
    	position: relative;
 	padding-left: 11.1%;
 	padding-top: 11.1%;
 	padding-right: 22.2%;
-	margin-bottom: 10px;
 
-	/*img {
-		max-width: 100%;
+
+	font-family: $font-main;
+	font-size: 1.56vw;
+
+	img {
+		/*max-width: 100%;
 		height: auto;
-		width: auto\9;
-	}*/
+		width: auto\9;*/
+		float: right;
+		margin-left: 5%;
+		margin-bottom: 5%;
+	}
 
-    h1 {
+    h1 { // used for main headers like about/resume/etc
     	font-family: $font-header;
     	vertical-align: top;
-    	margin: 10px;
+    	text-align: center;
+    	margin-top: 0;
+    	font-size: $font-h1-size;
     }
 
-	p {
-		font-family: $font-main;
-		font-size: 20px;	
+    h2 { // used for internal paragraph headers
+    	font-family: $font-main;
+    	font-size: ($font-h1-size/1.6)vw;
+    }
+
+    h3 {
+    	font-family: $font-main;
+    	font-size: ($font-h1-size/1.6/1.6)vw;
+    }
+
+    .smalltext {
+    	font-family: $font-main;
+    	&.three {
+    		font-size: ($font-h1-size/1.6/1.6/1.6);
+    	}
+    	&.two {
+    		font-size: ($font-h1-size/1.6/1.6/1.6/1.6);
+    	}
+    	&.one {
+    		font-size: ($font-h1-size/1.6/1.6/1.6/1.6/1.6);
+    	}
+    }
+}
+
+.onHoverBold {
+	&:hover {
+		font-weight:bold;
 	}
 }

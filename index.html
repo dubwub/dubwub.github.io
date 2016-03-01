@@ -19,11 +19,23 @@
 <section class="main">
 <div class="panel" name="about" id="about">
 	<h1>about</h1>
-	<img src="./img/darwin.jpg" width="200vw" height="200vw"/> <p>Hi! I'm <b>Darwin Ding</b>, a programmer and engineer at Rensselaer Polytechnic Institute originally from Lexington, MA. I specialize in C/C++/Java, but I love learning about new technologies and have experience with a wide variety of tools like NodeJS, D3 and more. When I'm not coding, I'm either picking things up and putting them down, making/eating food, playing piano or smashing.</p>
+	<h2>What's up?</h2><img src="./img/darwin.jpg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, or cooking!
+	<br><br><div onclick="scrollToAnchor('contact');" class="onHoverBold">Want to share ideas? Reach out!</div>
 </div>
 <div class="panel" name="resume" id="resume">
 	<h1>resume</h1>
-	3.72 gpa - rpi
+	<h2>education</h2>
+	<div align="left" style="display:inline;" class="onHoverBold" onclick="toggleMe('resume_RPI');">Rensselaer Polytechnic Institute</div><div style="float: right; display:inline;"><b>3.72</b><div class="smalltext three" style="display:inline;">/4 (GPA)</div></div>
+	<br><div style="float:right;" class="smalltext three">Computer Science/Computer Systems Engineer Dual Mjr.</div><div style="float:right;" class="smalltext three">Estimated Graduation Date: May 2017</div>
+	<!--<br><b><span onclick="var result = toggleMe('resume_RPI'); if (result==1) {document.getElementById('resume_RPI_toggle').innerHTML='[Hide details!]'} else {document.getElementById('resume_RPI_toggle').innerHTML='[Show details!]'}" id="resume_RPI_toggle" class="smalltext three" style="left:25%">[Show details!]</span></b>-->
+	<br><div style="float:right; display:none;" class="smalltext three" id="resume_RPI">
+	<br>
+	<b>Relevant Coursework:</b> Data Structures, Intro to Algorithms, Embedded Control, CAD, Computer Architecture, Networking & Operating Systems (CANOS), Operating Systems, Programming Languages
+	<br /><br /><b>Clubs & Extra:</b> Physics 2 TA, Orchestra timpanist & percussionist, Percussion Ensemble, RPI Weightlifting Club, Chess Club, RPI Smash Club VP & Event Coordinator</div> <br />
+	<div class="smalltext three" style="display:inline;">prev.</div	> Lexington High School
+	<h2>experience</h2>
+	<div align="left" style="display:inline;">GE Oil & Gas</div><div style="float: right; display:inline-block;" class="smalltext three">Summer 2014/2015, Fall 2015</div>
+
 	<br><a href="https://drive.google.com/file/d/0BwDzN5Skh9SLQWdMbVhuc1pyaG8/view?usp=sharing">transcript</a>
 	<br><a href="https://drive.google.com/file/d/0BwDzN5Skh9SLdXVuNzQ5c0lDRGc/view?usp=sharing">resume</a>
 </div>
@@ -35,8 +47,10 @@
 </div>
 <div class="panel" name="contact" id="contact">
 	<h1>contact</h1>
-	facebook, linkedin
-	<br>github, email
+	facebook
+	<br><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0">linkedin</a>
+	<br><a href="https://github.com/dubwub">github</a>
+	<br>email
 </div>
 </section>
 </body>
@@ -61,6 +75,21 @@ function updateWindow() {
 	d3.select(".mainLine line").attr("y1",window.innerHeight*.1).attr("y2",window.innerHeight*.9);
 }
 
+function toggleMe(a){
+	var e=document.getElementById(a);
+	if(!e)return true;
+	if(e.style.display=="none"){
+		e.style.display="block";
+		return 1;
+	}
+	else{
+		e.style.display="none";
+		return 0;
+	}
+	return true;
+}
+
+// main line that divides the left nav bar and the right window. goes from 10% win height to 90%, also resizes automatically
 var svgMainLine = d3.select("body").append("svg").attr("class","mainLine").attr("width", 2).attr("height",window.innerHeight).attr("style","position:fixed; left: 33%;");
 var line = svgMainLine.append("line").attr("x1", 0).attr("y1", "10%").attr("x2",0).attr("y2","90%");
 window.onresize = updateWindow;
