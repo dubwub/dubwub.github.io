@@ -35,7 +35,7 @@ table.nav_bar {
     table.nav_bar td.left {
       text-align: right; }
   table.nav_bar tr:hover {
-    /*font-weight:bold;*/ }
+    font-weight: bold; }
 
 .main {
   height: 100%;
