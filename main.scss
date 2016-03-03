@@ -21,6 +21,15 @@ $main_margin: 3%;
 
 //styles
 
+a {
+	color: inherit;
+	text-decoration: inherit;
+	font-size: 100px;
+	&:hover {
+		font-weight: bold;
+	}
+}
+
 html {
 	position: absolute;
 	width: 100%;

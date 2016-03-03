@@ -9,48 +9,57 @@
 <div class="nav_bar_div">
 <table class="nav_bar">
 	<tr><td /><td><b>d</b></td></tr>
-	<tr onclick="scrollToAnchor('about');"><td /><td><b>a</b>bout</td></tr>
-	<tr onclick="scrollToAnchor('resume');"><td /><td><b>r</b>esume</td></tr>
-	<tr onclick="scrollToAnchor('work');"><td /><td><b>w</b>ork</td></tr>
-	<tr onclick="scrollToAnchor('hobbies');"><td class="left">hobb</td><td><b>i</b>es</td></tr>
-	<tr onclick="scrollToAnchor('contact');"><td class="left">co</td><td><b>n</b>tact</td></tr>
+	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>a</b>bout</td></tr>
+	<tr onclick="scrollToAnchor('resume');" style="cursor:pointer;"><td /><td><b>r</b>esume</td></tr>
+	<tr onclick="scrollToAnchor('work');" style="cursor:pointer;"><td /><td><b>w</b>ork</td></tr>
+	<tr onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><td class="left">hobb</td><td><b>i</b>es</td></tr>
+	<tr onclick="scrollToAnchor('contact');" style="cursor:pointer;"><td class="left">co</td><td><b>n</b>tact</td></tr>
 </table>
 </div>
 <section class="main">
 <div class="panel" name="about" id="about">
 	<h1>about</h1>
-	<h2>What's up?</h2><img src="./img/darwin.jpg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, or cooking! I actually made some really cool visualizations for these for fun, <span onclick="scrollToAnchor('hobbies');"><b>check them out below</b></span>!
-	<br><br><div onclick="scrollToAnchor('contact');" class="onHoverBold">Want to share ideas? Reach out!</div>
+	<h2>What's up?</h2><img src="./img/darwin.jpg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, or cooking! I actually made some really cool visualizations for these for fun, <span onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><b>check them out below</b></span>!
+	<br><br><div onclick="scrollToAnchor('contact');" class="onHoverBold" style="cursor:pointer;">Want to share ideas? Reach out!</div>
 </div>
 <div class="panel" name="resume" id="resume">
-	<h1>resume</h1>
+	<h1 style="margin-bottom: 0;">resume</h1>
+	<div class="smalltext three onHoverBold" style="text-align:center; cursor:pointer;">below is a short summary, click here for full details!</div>
 	<h2>education</h2>
+	<div>
 	<div class="smalltext three" style="display:inline;">curr. </div><div align="left" style="display:inline;">Rensselaer Polytechnic Institute</div><div style="float: right; display:inline;"><b>3.72</b><div class="smalltext three" style="display:inline;">/4 (GPA)</div></div>
-	<br><div style="float:right;" class="smalltext three">Computer Science/Computer Systems Engineer Dual Mjr.</div><div style="float:right;" class="smalltext three">Estimated Graduation Date: May 2017</div>
-	<br><div style="margin: 5%;" class="smalltext three" id="resume_educ_RPI">
+	<div style="//text-align:right;" class="smalltext three">Computer Science/Computer Systems Engineer Dual Mjr.</div>
+	<div style="//text-align:right;" class="smalltext three">Sept 2013 - May 2017 (est.)</div>
+	</div>
+	<!--<br><div style="margin: 5%;" class="smalltext three" id="resume_educ_RPI">
 	<b>Relevant Coursework:</b> Data Structures, Intro to Algorithms, Embedded Control, CAD, Computer Architecture, Networking & Operating Systems (CANOS), Operating Systems, Programming Languages
-	<br /><br /><b>Clubs & Extra:</b> Physics 2 TA, Orchestra timpanist & percussionist, Percussion Ensemble, RPI Weightlifting Club, Chess Club, RPI Smash Club VP & Event Coordinator</div>
-	<div class="smalltext three" style="display:inline;">prev.</div	> Lexington High School
+	<br /><br /><b>Clubs & Extra:</b> Physics 2 TA, Orchestra timpanist & percussionist, Percussion Ensemble, RPI Weightlifting Club, Chess Club, RPI Smash Club VP & Event Coordinator</div>-->
+	<div style="margin-top:10px;"><div class="smalltext three" style="display:inline;">prev.</div> Lexington High School
+	<br><div style="//text-align:right;" class="smalltext three">Sept 2009 - May 2013</div></div>
 	<h2>experience</h2>
-	<div align="left" style="display:inline;">GE Oil & Gas</div><div style="float: right; display:inline-block;" class="smalltext three">Software Intern</div>
-	<br><div style="margin: 5%;" class="smalltext three" id="resume_exp_GE">
+	<div><div style="display:inline;">GE Oil & Gas<div class="smalltext three" style="display:inline; float:right; height:100%;"> Billerica MA -- Software Intern</div></div>
+	<br><div style="text-align:right;" class="smalltext three">Summer 2014, Summer 2015, Fall 2015</div>
+	</div>
+	<!--<br><div style="margin: 5%;" class="smalltext three" id="resume_exp_GE">
 	<b>September 2015 - January 2016</b>
 	<br>Working remotely on my summer project as a contractor to add functionality, documentation and automated unit tests.
 	<br><br><b>June 2015 - August 2015</b>
 	<br>Developed an Android app in Java to wirelessly connect to a flowmeter to handle configuration, real-time data collection and graphing. Also rolled out a custom automated unit test framework. This project serves as a foundation that engineering teams are modularizing off of for their own products.
 	<br><br><b>June 2014 - August 2014</b>
 	<br>Wrote a data visualization application that imports data to build interactive graphs with post-processing capabilities like FFT. It was built on NodeJS with D3.JS as the frontend and C++ modules as the back-end. 
+	</div>-->
+	<div><div align="left" style="display:inline;">Nexaweb</div><div style="float: right; display:inline-block; position: relative; bottom: 0px;" class="smalltext three">Software Intern</div>
+	<div align="right" class="smalltext two">Burlington, MA</div>
 	</div>
-	<div align="left" style="display:inline;">Nexaweb</div><div style="float: right; display:inline-block;" class="smalltext three">Software Intern</div>
-	<div style="margin: 5%;" class="smalltext three" id="resume_exp_Nexaweb">
+	<!--<div style="margin: 5%;" class="smalltext three" id="resume_exp_Nexaweb">
 	<b>June 2013 - August 2013</b>
 	<br>Made Bash scripts to help automate internal file management and programmed in Java using the ANT framework for back-end tasks.
-	</div>
-	<div align="left" style="display:inline;">Accordare Inc.</div><div style="float: right; display:inline-block;" class="smalltext three">Software Intern</div>
-	<div style="margin: 5%;" class="smalltext three" id="resume_exp_Accordare">
+	</div>-->
+	<div><div align="left" style="display:inline;">Accordare Inc.</div><div style="float: right; display:inline-block;" class="smalltext three">Software Intern</div></div>
+	<!--<div style="margin: 5%;" class="smalltext three" id="resume_exp_Accordare">
 	<b>June 2011- August 2011; June 2012 - August 2012</b>
 	<br>UI & back-end work on theMBAtour.com in Java/JSP, also worked with automation services integrated with tools like Amazon S3/Cloudfront
-	</div>
+	</div>-->
 	<h2>skills</h2>
 	<div style="margin: 5%;" class="smalltext three" id="resume_skills">
 	Experience developing <b>Android apps, games, and websites</b> 
@@ -104,7 +113,7 @@ function updateWindow() {
 	d3.select(".mainLine line").attr("y1",window.innerHeight*.1).attr("y2",window.innerHeight*.9);
 }
 
-function toggleMe(a){
+/*function toggleMe(a){
 	var e=document.getElementById(a);
 	if(!e)return true;
 	if(e.style.display=="none"){
@@ -116,7 +125,7 @@ function toggleMe(a){
 		return 0;
 	}
 	return true;
-}
+}*/
 
 // main line that divides the left nav bar and the right window. goes from 10% win height to 90%, also resizes automatically
 var svgMainLine = d3.select("body").append("svg").attr("class","mainLine").attr("width", 2).attr("height",window.innerHeight).attr("style","position:fixed; left: 33%;");
