@@ -8,7 +8,7 @@
 <body>
 <div class="nav_bar_div">
 <table class="nav_bar">
-	<tr><td /><td><b>d</b></td></tr>
+	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>d</b></td></tr>
 	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>a</b>bout</td></tr>
 	<tr onclick="scrollToAnchor('resume');" style="cursor:pointer;"><td /><td><b>r</b>esume</td></tr>
 	<tr onclick="scrollToAnchor('work');" style="cursor:pointer;"><td /><td><b>w</b>ork</td></tr>
@@ -76,21 +76,24 @@ var resume_data = [{
     "month_end": 5,
     "year_end": 2013,
     "title": "Studied at <b>Lexington High School</b>",
-    "desc": "Captain of the Chess Club, member of the school Wind Ensemble and Percussion Ensemble."
+    "desc": "Captain of the Chess Club, member of the school Wind Ensemble and Percussion Ensemble.",
+    "class": "education"
 }, {
     "month_start": 9,
     "year_start": 2013,
     "month_end": 5,
     "year_end": 2017,
     "title": "Studied at <b>Rensselaer Polytechnic Institute</b>",
-    "desc": "GPA: <b>3.72</b><br>Major: <b>Computer Science/Computer Systems Engineering Dual</b>"
+    "desc": "GPA: <b>3.72</b><br>Major: <b>Computer Science/Computer Systems Engineering Dual</b>",
+    "class": "education"
 },{
     "month_start": 6,
     "year_start": 2011,
     "month_end": 8,
     "year_end": 2012,
     "title": "Worked at <b>Accordare Inc.</b>",
-    "desc": "JSP, etc"
+    "desc": "JSP, etc",
+    "class": "work"
 },
 {
     "month_start": 6,
@@ -98,7 +101,8 @@ var resume_data = [{
     "month_end": 8,
     "year_end": 2013,
     "title": "Worked at <b>Nexaweb</b>",
-    "desc": "Cloudfront/S3 and stuff"
+    "desc": "Cloudfront/S3 and stuff",
+    "class": "work"
 },
 {
     "month_start": 6,
@@ -106,7 +110,8 @@ var resume_data = [{
     "month_end": 12,
     "year_end": 2015,
     "title": "Worked at <b>GE Oil & Gas</b>",
-    "desc": "Worked on Project Blue & Flow Analytics"
+    "desc": "Worked on Project Blue & Flow Analytics",
+    "class": "work"
 }
 ];
 
@@ -116,6 +121,7 @@ resume_svg.style("height",resume_data.length*21);
 
 function create_resume_table(obj) {
 	var newTable = document.createElement("table");
+	newTable.className = "resume_vis_table";
 	var tr1 = document.createElement("tr"); newTable.appendChild(tr1);
 	var td1 = document.createElement("td"); tr1.appendChild(td1);
 	td1.innerHTML = obj.title;

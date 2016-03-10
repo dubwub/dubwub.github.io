@@ -1,4 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto|Open+Sans);
+a {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 100px; }
+  a:hover {
+    font-weight: bold; }
+
 html {
   position: absolute;
   width: 100%;
@@ -69,10 +76,10 @@ table.nav_bar {
     font-size: 4vw; }
   .panel h2 {
     font-family: "Open Sans", sans-serif;
-    font-size: 2.5vw vw; }
+    font-size: 2.5vw; }
   .panel h3 {
     font-family: "Open Sans", sans-serif;
-    font-size: 1.5625vw vw; }
+    font-size: 1.5625vw; }
   .panel .smalltext {
     font-family: "Open Sans", sans-serif; }
     .panel .smalltext.three {
@@ -81,6 +88,12 @@ table.nav_bar {
       font-size: 0.61035vw; }
     .panel .smalltext.one {
       font-size: 0.38147vw; }
+  .panel .resume_vis_table {
+    display: inline-block;
+    border: 2px solid black;
+    padding: 2.5%;
+    margin: 1%;
+    width: 100%; }
 
 .onHoverBold:hover {
   font-weight: bold; }
