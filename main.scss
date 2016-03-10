@@ -123,12 +123,12 @@ table.nav_bar {
 
     h2 { // used for internal paragraph headers
     	font-family: $font-main;
-    	font-size: ($font-h1-size/1.6)vw;
+    	font-size: ($font-h1-size/1.6);
     }
 
     h3 {
     	font-family: $font-main;
-    	font-size: ($font-h1-size/1.6/1.6)vw;
+    	font-size: ($font-h1-size/1.6/1.6);
     }
 
     .smalltext {
