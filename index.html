@@ -26,7 +26,7 @@
 	<h1 style="margin-bottom: 0;">resume</h1>
 	<div class="smalltext three onHoverBold" style="text-align:center; cursor:pointer;">below is a short summary, click here for full details!</div>
 	<div id="resume_vis">
-	<svg id="resume_svg" width="100%" height="500px"></svg>
+	<svg id="resume_svg" width="100%" style="padding-top: 10%;"></svg>
 	</div>
 </div>
 <div class="panel" name="work" id="work">
@@ -112,6 +112,18 @@ var resume_data = [{
 
 //resume bar chart styling
 var resume_svg = d3.select("#resume_svg");
+resume_svg.style("height",resume_data.length*21);
+
+function create_resume_table(obj) {
+	var newTable = document.createElement("table");
+	var tr1 = document.createElement("tr"); newTable.appendChild(tr1);
+	var td1 = document.createElement("td"); tr1.appendChild(td1);
+	td1.innerHTML = obj.title;
+	var tr2 = document.createElement("tr"); newTable.appendChild(tr2);
+	var td2 = document.createElement("td"); tr2.appendChild(td2);
+	td2.innerHTML = obj.desc;
+	return newTable;
+}
 
 var smallest_day = 0, largest_day = 0;
 for (var i = 0; i < resume_data.length; i++) {
@@ -121,13 +133,19 @@ for (var i = 0; i < resume_data.length; i++) {
 	tmp = (resume_data[i].year_end-1)*360 + resume_data[i].month_end*30;
 	if (tmp > largest_day)
 		largest_day = tmp;
+
+	var newTable = create_resume_table(resume_data[i]);
+	newTable.id = ("resume_vis_" + i);
+	document.getElementById("resume_vis").appendChild(newTable);
 }
 //var interpolate_screen = d3.interpolateNumber(smallest_day, largest_day);
 var interpolate_screen = d3.interpolateNumber(0,parseInt(resume_svg.style("width")));
 resume_svg.selectAll("rect").data(resume_data).enter().append("rect")
 	.attr("x",function(d){return interpolate_screen(((d.month_start*30+(d.year_start-1)*360)-smallest_day)/(largest_day-smallest_day));})
 	.attr("y",function(d,i){return i*21;})
-	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20);
+	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20)
+	/*.on("mouseover",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","visible");})
+	.on("mouseout",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","hidden");})*/;
 
 
 </script>
