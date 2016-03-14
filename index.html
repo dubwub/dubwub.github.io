@@ -8,7 +8,7 @@
 <body>
 <div class="nav_bar_div">
 <table class="nav_bar">
-	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>d</b></td></tr>
+	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"	><td /><td><b>d</b></td></tr>
 	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>a</b>bout</td></tr>
 	<tr onclick="scrollToAnchor('resume');" style="cursor:pointer;"><td /><td><b>r</b>esume</td></tr>
 	<tr onclick="scrollToAnchor('work');" style="cursor:pointer;"><td /><td><b>w</b>ork</td></tr>
@@ -39,7 +39,7 @@
 <div class="panel" name="contact" id="contact">
 	<h1>contact</h1>
 	<h2>Hit me up at...</h2>
-	<br><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0"><img src="./img/LinkedIn_Logo.png"/></a><a href="https://github.com/dubwub"><img src="./img/GitHub_Logo.png" width="30%" height="30%"/></a>
+	<br><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0"><img src="./img/LinkedIn_Logo.png"/></a><a href="https://github.com/dubwub"><img src="./img/GitHub_Logo.png" /></a>
 	<br>... or reach out to me at dingd@rpi.edu
 </div>
 </section>
@@ -117,7 +117,8 @@ var resume_data = [{
 
 //resume bar chart styling
 var resume_svg = d3.select("#resume_svg");
-resume_svg.style("height",resume_data.length*21);
+var top_padding = 20;
+resume_svg.style("height",top_padding + resume_data.length*21);
 
 function create_resume_table(obj) {
 	var newTable = document.createElement("table");
@@ -132,26 +133,51 @@ function create_resume_table(obj) {
 }
 
 var smallest_day = 0, largest_day = 0;
+var start_year = 0; var end_year = 0;
 for (var i = 0; i < resume_data.length; i++) {
-	var tmp = (resume_data[i].year_start-1)*360 + resume_data[i].month_start*30;
-	if (tmp < smallest_day || smallest_day == 0)
+	var tmp = (resume_data[i].year_start-1)*360 + (resume_data[i].month_start-1)*30;
+	if (tmp < smallest_day || smallest_day == 0) {
+		start_year = resume_data[i].year_start;
 		smallest_day = tmp;
-	tmp = (resume_data[i].year_end-1)*360 + resume_data[i].month_end*30;
-	if (tmp > largest_day)
+	}
+	tmp = (resume_data[i].year_end-1)*360 + (resume_data[i].month_end-1)*30;
+	if (tmp > largest_day) {
+		end_year = resume_data[i].year_end;
 		largest_day = tmp;
+	}
 
 	var newTable = create_resume_table(resume_data[i]);
 	newTable.id = ("resume_vis_" + i);
 	document.getElementById("resume_vis").appendChild(newTable);
 }
-//var interpolate_screen = d3.interpolateNumber(smallest_day, largest_day);
+
 var interpolate_screen = d3.interpolateNumber(0,parseInt(resume_svg.style("width")));
+
+for (var i = start_year; i <= end_year; i++) {
+	if (i*360 >= smallest_day && i*360 <= largest_day) {
+		var x_pos = interpolate_screen((i*360 - smallest_day)/(largest_day-smallest_day));
+		resume_svg.append("line").attr("class", "timeline_line")
+			.attr("style","stroke-width:2px;stroke:black;")
+			.attr("x1",x_pos).attr("y1", "10%")
+			.attr("x2",x_pos).attr("y2","90%");
+		resume_svg.append("text").text(i).attr("x",x_pos).attr("y",0).attr("text-anchor","middle");
+
+	}
+	if (i*360 + 180 >= smallest_day && i*360 + 180 <= largest_day) {
+		var x_pos = interpolate_screen((i*360 + 180 - smallest_day)/(largest_day-smallest_day));
+		resume_svg.append("line").attr("class", "timeline_line")
+			.attr("style","stroke-width:1px;stroke:black;")
+			.attr("x1",x_pos).attr("y1", "30%")
+			.attr("x2",x_pos).attr("y2","70%");	
+	}
+}
+
 resume_svg.selectAll("rect").data(resume_data).enter().append("rect")
 	.attr("x",function(d){return interpolate_screen(((d.month_start*30+(d.year_start-1)*360)-smallest_day)/(largest_day-smallest_day));})
-	.attr("y",function(d,i){return i*21;})
+	.attr("y",function(d,i){return top_padding+i*21;})
 	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20)
+	.attr("fill","#808080")
 	/*.on("mouseover",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","visible");})
 	.on("mouseout",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","hidden");})*/;
-
 
 </script>
