@@ -104,13 +104,17 @@ table.nav_bar {
 	font-family: $font-main;
 	font-size: 1.56vw;
 
-	img {
+	img.aboutImg {
 		/*max-width: 100%;
 		height: auto;
 		width: auto\9;*/
 		float: right;
 		margin-left: 5%;
 		margin-bottom: 5%;
+	}
+
+	img.contactImg {
+		margin: 5%;
 	}
 
     h1 { // used for main headers like about/resume/etc

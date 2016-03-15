@@ -19,7 +19,7 @@
 <section class="main">
 <div class="panel" name="about" id="about">
 	<h1>about</h1>
-	<h2>What's up?</h2><img src="./img/darwin.jpg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, or cooking! I actually made some really cool visualizations for these for fun, <span onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><b>check them out below</b></span>!
+	<h2>What's up?</h2><img src="./img/darwin.jpg" class="aboutImg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, or cooking! I actually made some really cool visualizations for these for fun, <span onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><b>check them out below</b></span>!
 	<br><br><div onclick="scrollToAnchor('contact');" class="onHoverBold" style="cursor:pointer;">Want to share ideas? Reach out!</div>
 </div>
 <div class="panel" name="resume" id="resume">
@@ -39,8 +39,8 @@
 <div class="panel" name="contact" id="contact">
 	<h1>contact</h1>
 	<h2>Hit me up at...</h2>
-	<br><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0"><img src="./img/LinkedIn_Logo.png"/></a><a href="https://github.com/dubwub"><img src="./img/GitHub_Logo.png" /></a>
-	<br>... or reach out to me at dingd@rpi.edu
+	<div align="center" style="margin:0%;padding:0%;"><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0"><img src="./img/LinkedIn_Logo.png" class="contactImg" alt="LinkedIn"/></a><a href="https://github.com/dubwub"><img src="./img/GitHub_Logo.png" class="contactImg" alt="GitHub/dubwub"/></a></div>
+	<div align="center" style="margin-bottom: 20%">... or reach out to me at <b>dingd@rpi.edu</b></span>
 </div>
 </section>
 </body>
@@ -69,6 +69,10 @@ function updateWindow() {
 var svgMainLine = d3.select("body").append("svg").attr("class","mainLine").attr("width", 2).attr("height",window.innerHeight).attr("style","position:fixed; left: 33%;");
 var line = svgMainLine.append("line").attr("x1", 0).attr("y1", "10%").attr("x2",0).attr("y2","90%");
 window.onresize = updateWindow;
+
+var colorMap = new Array();
+colorMap["education"] = "#9f0303";
+colorMap["work"] = "#003366";
 
 var resume_data = [{
     "month_start": 9,
@@ -124,6 +128,7 @@ function create_resume_table(obj) {
 	var newTable = document.createElement("table");
 	newTable.className = "resume_vis_table";
 	var tr1 = document.createElement("tr"); newTable.appendChild(tr1);
+	tr1.style.backgroundColor = colorMap[obj.class];
 	var td1 = document.createElement("td"); tr1.appendChild(td1);
 	td1.innerHTML = obj.title;
 	var tr2 = document.createElement("tr"); newTable.appendChild(tr2);
@@ -176,7 +181,7 @@ resume_svg.selectAll("rect").data(resume_data).enter().append("rect")
 	.attr("x",function(d){return interpolate_screen(((d.month_start*30+(d.year_start-1)*360)-smallest_day)/(largest_day-smallest_day));})
 	.attr("y",function(d,i){return top_padding+i*21;})
 	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20)
-	.attr("fill","#808080")
+	.attr("fill",function(d){return colorMap[d.class];})
 	/*.on("mouseover",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","visible");})
 	.on("mouseout",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","hidden");})*/;
 
