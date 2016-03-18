@@ -121,7 +121,7 @@ var resume_data = [{
 
 //resume bar chart styling
 var resume_svg = d3.select("#resume_svg");
-var top_padding = 20;
+var top_padding = 50;
 resume_svg.style("height",top_padding + resume_data.length*21);
 
 function create_resume_table(obj) {
@@ -163,17 +163,19 @@ for (var i = start_year; i <= end_year; i++) {
 		var x_pos = interpolate_screen((i*360 - smallest_day)/(largest_day-smallest_day));
 		resume_svg.append("line").attr("class", "timeline_line")
 			.attr("style","stroke-width:2px;stroke:black;")
-			.attr("x1",x_pos).attr("y1", "10%")
-			.attr("x2",x_pos).attr("y2","90%");
-		resume_svg.append("text").text(i).attr("x",x_pos).attr("y",0).attr("text-anchor","middle");
-
+			.attr("x1",x_pos).attr("y1", top_padding - 5)
+			.attr("x2",x_pos).attr("y2", top_padding - 15);
+		resume_svg.append("text").text((i-i%100)/100).attr("x",x_pos).attr("y",0).attr("text-anchor","middle")
+			.attr("style","font-size:40px; fill: lightgray;");
+		resume_svg.append("text").text(function() {if (i%100 < 10) return ("0" + i%100); else return i%100;})
+			.attr("style","font-size:40px; font-weight: bold; fill:gray;").attr("x",x_pos).attr("y",30).attr("text-anchor","middle");
 	}
 	if (i*360 + 180 >= smallest_day && i*360 + 180 <= largest_day) {
 		var x_pos = interpolate_screen((i*360 + 180 - smallest_day)/(largest_day-smallest_day));
 		resume_svg.append("line").attr("class", "timeline_line")
 			.attr("style","stroke-width:1px;stroke:black;")
-			.attr("x1",x_pos).attr("y1", "30%")
-			.attr("x2",x_pos).attr("y2","70%");	
+			.attr("x1",x_pos).attr("y1", top_padding - 8)
+			.attr("x2",x_pos).attr("y2", top_padding - 12);	
 	}
 }
 
