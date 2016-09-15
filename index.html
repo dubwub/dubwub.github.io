@@ -17,7 +17,6 @@
 </table>
 </div>
 <section class="main">
-<h1><center>site still a work in progress!</center></h1>
 <div class="panel" name="about" id="about">
 	<h1>about</h1>
 	<h2>What's up?</h2><img src="./img/darwin.jpg" class="aboutImg" width="200vw" height="200vw"/> I'm <b>Darwin Ding</b>, a programmer and engineer at <b>Rensselaer Polytechnic Institute</b>.<br /><br />I'm primarily a <b>backend developer in C/C++/Java</b>, but I've got experience with front-end dev, android app dev, game dev and much, much more!<br /><br />If I'm not coding, I might be lifting, playing piano, playing chess or cooking! I actually made some really cool visualizations for these for fun, <span onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><b>check them out below</b></span>!
@@ -25,13 +24,23 @@
 </div>
 <div class="panel" name="resume" id="resume">
 	<h1 style="margin-bottom: 0;">resume</h1>
-	<div class="smalltext three onHoverBold" style="text-align:center; cursor:pointer;">below is a short summary, click here for full details!</div>
+	<div class="smalltext three onHoverBold" style="text-align:center; cursor:pointer;" onclick="location.href='./files/F2016Resume.pdf'">below is a short summary, click here for full details!</div>
 	<div id="resume_vis">
 	<svg id="resume_svg" width="100%" style="padding-top: 10%;"></svg>
 	</div>
 </div>
 <div class="panel" name="work" id="work">
 	<h1>work</h1>
+	<h2 style="margin-bottom: 0">AI Competition Framework</h2>
+	<h3 style="margin-top:0">Fall 2016 Semester Project</h3>
+	<img src="./img/aicomp.png" style="display: block; height: 300px; width: 650px; margin: auto;">
+	<p>Currently developing the framework to support RPI's very first AI competition! I'm in charge of everything from designing and implementing each part to making sure it's an accessible challenge still rich with competitive depth.</p>
+	<p>This project is built in full-stack JS on the MEAN stack.</p>
+	<h2 style="margin-bottom: 0">Real-time NLP NoteReader</h2>
+	<h3 style="margin-top:0">Summer 2016 Intern Project at Epic Systems</h3>
+	<img src="./img/epicnlp.png" style="display: block; height: 300px; width: 550px; margin: auto;">
+	<p>In the real world, doctors have to deal with a lot of duplication. A patient coming in with a sore throat will not only appear in the doctor's freehand doctor's notes for the visit, but also in the workflows doctors have to fill out after each visit.</p>
+	<p>This project aims to solve that problem by filling out the workflows using doctor's note input in real time using NLP. Done in full-stack Python using PySpark, Flask and NLTK.</p>
 </div>
 <div class="panel" name="hobbies" id="hobbies">
 	<h1>hobbies</h1>
@@ -41,7 +50,7 @@
 	<h1>contact</h1>
 	<h2>Hit me up at...</h2>
 	<div align="center" style="margin:0%;padding:0%;"><a href="https://www.linkedin.com/in/darwin-ding-08b10ba0"><img src="./img/LinkedIn_Logo.png" class="contactImg" alt="LinkedIn"/></a><a href="https://github.com/dubwub"><img src="./img/GitHub_Logo.png" class="contactImg" alt="GitHub/dubwub"/></a></div>
-	<div align="center" style="margin-bottom: 20%">... or reach out to me at <b>dingd@rpi.edu</b></span>
+	<div align="center" style="margin-bottom: 20%">... or reach out to me at <b>dingdarwin@gmail.com</b></span>
 </div>
 </section>
 </body>
