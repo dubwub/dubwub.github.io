@@ -1,16 +1,16 @@
 //https://color.adobe.com/infographic-color-theme-7604550
 
 //Google fonts
-@import url(https://fonts.googleapis.com/css?family=Roboto|Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway);
 
 //font variables
-$font-header: 'Roboto', sans-serif;
-$font-main: 'Open Sans', sans-serif;
+$font-header: 'Montserrat', sans-serif;
+$font-main: 'Raleway', sans-serif;
 $font-h1-size: 4vw;
 
-//colors
-$color-bg: white;
-$color-text-main: black;
+//colors: https://color.adobe.com/sandy-stone-beach-ocean-diver-color-theme-15325/edit/?copy=true&base=0&rule=Custom&selected=4&name=Copy%20of%20sandy%20stone%20beach%20ocean%20diver&mode=rgb&rgbvalues=0.901961,0.886275,0.686275,0.654902,0.639216,0.494118,0.937255,0.92549,0.792157,0.0156863,0.388235,0.501961,0,0.184314,0.184314&swatchOrder=0,1,2,3,4
+$color-bg: #EFECCA;
+$color-text-main: #002F2F;
 $color-text-bold1: black;
 $color-text-bold2: black;
 $color-stroke-line: black;
@@ -31,6 +31,7 @@ a {
 }
 
 html {
+	background-color: $color-bg;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -123,10 +124,11 @@ table.nav_bar {
     	text-align: center;
     	margin-top: 0;
     	font-size: $font-h1-size;
+    	font-weight: bold;
     }
 
     h2 { // used for internal paragraph headers
-    	font-family: $font-main;
+    	font-family: $font-header;
     	font-size: ($font-h1-size/1.6);
     }
 
