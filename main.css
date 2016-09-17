@@ -1,13 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway);
-a {
-  color: inherit;
-  text-decoration: inherit;
-  font-size: 100px; }
-  a:hover {
-    font-weight: bold; }
-
 html {
-  background-color: #EFECCA;
+  background-color: #E3CDA4;
   position: absolute;
   width: 100%;
   height: 100%; }
@@ -27,6 +20,8 @@ svg.mainLine {
   margin-right: 3%;
   margin-bottom: 10%;
   position: fixed; }
+  .nav_bar_div b {
+    color: #703030; }
 
 table.nav_bar {
   position: relative;
@@ -100,6 +95,7 @@ table.nav_bar {
     width: 100%; }
 
 .onHoverBold:hover {
-  font-weight: bold; }
+  font-weight: bold;
+  color: #703030; }
 
 /*# sourceMappingURL=main.css.map */

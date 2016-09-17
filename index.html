@@ -8,11 +8,11 @@
 <body>
 <div class="nav_bar_div">
 <table class="nav_bar">
-	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"	><td /><td><b>d</b></td></tr>
+	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>d</b></td></tr>
 	<tr onclick="scrollToAnchor('about');" style="cursor:pointer;"><td /><td><b>a</b>bout</td></tr>
 	<tr onclick="scrollToAnchor('resume');" style="cursor:pointer;"><td /><td><b>r</b>esume</td></tr>
 	<tr onclick="scrollToAnchor('work');" style="cursor:pointer;"><td /><td><b>w</b>ork</td></tr>
-	<tr onclick="scrollToAnchor('hobbies');" style="cursor:pointer;"><td class="left">hobb</td><td><b>i</b>es</td></tr>
+	<tr onclick="scrollToAnchor('hobbies');" style="cursor:pointer;" class="padleft"><td class="left">hobb</td><td class="middle"><b>i</b>es</td></tr>
 	<tr onclick="scrollToAnchor('contact');" style="cursor:pointer;"><td class="left">co</td><td><b>n</b>tact</td></tr>
 </table>
 </div>
@@ -25,6 +25,7 @@
 <div class="panel" name="resume" id="resume">
 	<h1 style="margin-bottom: 0;">resume</h1>
 	<div class="smalltext three onHoverBold" style="text-align:center; cursor:pointer;" onclick="location.href='./files/F2016Resume.pdf'">below is a short summary, click here for full details!</div>
+	<h2 style="margin-bottom: 0;">timeline</h2>
 	<div id="resume_vis">
 	<svg id="resume_svg" width="100%" style="padding-top: 10%;"></svg>
 	</div>
@@ -41,10 +42,18 @@
 	<img src="./img/epicnlp.png" style="display: block; height: 300px; width: 550px; margin: auto;">
 	<p>In the real world, doctors have to deal with a lot of duplication. A patient coming in with a sore throat will not only appear in the doctor's freehand doctor's notes for the visit, but also in the workflows doctors have to fill out after each visit.</p>
 	<p>This project aims to solve that problem by filling out the workflows using doctor's note input in real time using NLP. Done in full-stack Python using PySpark, Flask and NLTK.</p>
+	<h2 style="margin-bottom: 0">Project Blue</h2>
+	<h3 style="margin-top:0">Summer 2015 Intern Project at GE Oil & Gas</h3>
+	<img src="./img/ge2015.png" style="display: block; height: 300px; width: 450px; margin: auto;">
+	<p>Reinvented the way field engineers would interface with a flowmeter by developing an Android tablet app that handled configuration, real-time data collection and graphing.</p>
+	<h2 style="margin-bottom: 0">Flow Analytics</h2>
+	<h3 style="margin-top:0">Summer 2014 Intern Project at GE Oil & Gas</h3>
+	<img src="./img/ge2014.png" style="display: block; height: 300px; width: 450px; margin: auto;">
+	<p>Developed a desktop application to handle post-processing and data visualization for field test data. Written with D3js and Node.JS</p>
 </div>
 <div class="panel" name="hobbies" id="hobbies">
 	<h1>hobbies</h1>
-
+	<h2 align="center">Coming soon!</h2>
 </div>
 <div class="panel" name="contact" id="contact">
 	<h1>contact</h1>
@@ -81,8 +90,8 @@ var line = svgMainLine.append("line").attr("x1", 0).attr("y1", "10%").attr("x2",
 window.onresize = updateWindow;
 
 var colorMap = new Array();
-colorMap["education"] = "#9f0303";
-colorMap["work"] = "#003366";
+colorMap["education"] = {"main": "#703030", "second": "#C77966"};
+colorMap["work"] = {"main": "#2F343B", "second": "#7E827A"};
 
 var resume_data = [{
     "month_start": 9,
@@ -137,8 +146,8 @@ resume_svg.style("height",top_padding + resume_data.length*21);
 function create_resume_table(obj) {
 	var newTable = document.createElement("table");
 	newTable.className = "resume_vis_table";
+	newTable.style.backgroundColor = colorMap[obj.class]["second"];
 	var tr1 = document.createElement("tr"); newTable.appendChild(tr1);
-	tr1.style.backgroundColor = colorMap[obj.class];
 	var td1 = document.createElement("td"); tr1.appendChild(td1);
 	td1.innerHTML = obj.title;
 	var tr2 = document.createElement("tr"); newTable.appendChild(tr2);
@@ -174,18 +183,18 @@ for (var i = start_year; i <= end_year; i++) {
 		resume_svg.append("line").attr("class", "timeline_line")
 			.attr("style","stroke-width:2px;stroke:black;")
 			.attr("x1",x_pos).attr("y1", top_padding - 5)
-			.attr("x2",x_pos).attr("y2", top_padding - 15);
-		resume_svg.append("text").text((i-i%100)/100).attr("x",x_pos).attr("y",0).attr("text-anchor","middle")
-			.attr("style","font-size:40px; fill: lightgray;");
-		resume_svg.append("text").text(function() {if (i%100 < 10) return ("0" + i%100); else return i%100;})
-			.attr("style","font-size:40px; font-weight: bold; fill:gray;").attr("x",x_pos).attr("y",30).attr("text-anchor","middle");
+			.attr("x2",x_pos).attr("y2", top_padding - 20);
+		// resume_svg.append("text").text((i-i%100)/100).attr("x",x_pos).attr("y",0).attr("text-anchor","middle")
+		// 	.attr("style","font-size:40px; fill: #7E827A;");
+		resume_svg.append("text").text(function() {if (i%100 < 10) return ("'0" + i%100); else return "'" + i%100;})
+			.attr("style","font-size:40px; font-weight: bold; fill: #2F343B;").attr("x",x_pos).attr("y",10).attr("text-anchor","middle");
 	}
 	if (i*360 + 180 >= smallest_day && i*360 + 180 <= largest_day) {
 		var x_pos = interpolate_screen((i*360 + 180 - smallest_day)/(largest_day-smallest_day));
 		resume_svg.append("line").attr("class", "timeline_line")
 			.attr("style","stroke-width:1px;stroke:black;")
 			.attr("x1",x_pos).attr("y1", top_padding - 8)
-			.attr("x2",x_pos).attr("y2", top_padding - 12);	
+			.attr("x2",x_pos).attr("y2", top_padding - 16);	
 	}
 }
 
@@ -193,7 +202,8 @@ resume_svg.selectAll("rect").data(resume_data).enter().append("rect")
 	.attr("x",function(d){return interpolate_screen(((d.month_start*30+(d.year_start-1)*360)-smallest_day)/(largest_day-smallest_day));})
 	.attr("y",function(d,i){return top_padding+i*21;})
 	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20)
-	.attr("fill",function(d){return colorMap[d.class];})
+	.attr("fill",function(d){return colorMap[d.class]["main"];})
+	.append("text").text(function(d, i) { return d.title; })
 	/*.on("mouseover",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","visible");})
 	.on("mouseout",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","hidden");})*/;
 
