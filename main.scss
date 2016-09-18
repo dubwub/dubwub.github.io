@@ -1,19 +1,31 @@
 //https://color.adobe.com/infographic-color-theme-7604550
 
 //Google fonts
-@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway);
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto|Open+Sans);
 
 //font variables
 $font-header: 'Montserrat', sans-serif;
-$font-main: 'Raleway', sans-serif;
+//$font-main: 'Raleway', sans-serif;
+//$font-main: 'Roboto', sans-serif;
+
+//$font-header: 'Roboto', sans-serif;
+$font-main: 'Open Sans', sans-serif;
 $font-h1-size: 4vw;
 
 //colors: https://color.adobe.com/Vintage-Ralph-Lauren-color-theme-2216979/
-$color-bg: #E3CDA4;
-$color-text-main: #002F2F;
-$color-text-bold1: #703030;
-$color-text-bold2: black;
-$color-stroke-line: black;
+//option 1: slate
+//$color-bg: #193441;
+//$color-text-main: #91AA9D;
+//$color-text-verybold: #FCFFF5;
+//$color-text-notsobold: #7E827A;
+//$color-stroke-line: #7E827A;
+
+//option 2: slate inverted
+$color-bg: #FCFFF5;
+$color-text-main: #3E606F;
+$color-text-verybold: #193441;
+$color-text-notsobold: #91AA9D;
+$color-stroke-line: #91AA9D;
 
 $nav_bar_width: 27%; // following rule of thirds
 $nav_bar_margin: 3%; // 2 margins on each side
@@ -45,9 +57,9 @@ svg.mainLine { // some of the styling for this is done in the JS, see index.html
 	margin-right: $nav_bar_margin;
 	margin-bottom: 10%;
 	position: fixed;
-
+	color: $color-text-notsobold;
 	b {
-		color: $color-text-bold1;
+		color: $color-text-verybold;
 	}
 }
 
@@ -73,6 +85,7 @@ table.nav_bar {
 	tr{
 		&:hover{
 			font-weight:bold;
+			color: $color-text-verybold;
 		}
 	}
 }
@@ -95,8 +108,7 @@ table.nav_bar {
 	padding-left: 11.1%;
 	padding-top: 11.1%;
 	padding-right: 22.2%;
-
-
+	color: $color-text-main;
 	font-family: $font-main;
 	font-size: 1.56vw;
 
@@ -113,6 +125,14 @@ table.nav_bar {
 		margin: 5%;
 	}
 
+	p {
+		color: $color-text-main;
+	}
+
+	b {
+		color: $color-text-verybold;
+	}
+
     h1 { // used for main headers like about/resume/etc
     	font-family: $font-header;
     	vertical-align: top;
@@ -120,11 +140,13 @@ table.nav_bar {
     	margin-top: 0;
     	font-size: $font-h1-size;
     	font-weight: bold;
+    	color: $color-text-verybold;
     }
 
     h2 { // used for internal paragraph headers
     	font-family: $font-header;
     	font-size: ($font-h1-size/1.6);
+    	color: $color-text-verybold;
     }
 
     h3 {
@@ -134,6 +156,9 @@ table.nav_bar {
 
     .smalltext {
     	font-family: $font-main;
+    	&.four {
+    		font-size: ($font-h1-size/1.6/1.6);
+    	}
     	&.three {
     		font-size: ($font-h1-size/1.6/1.6/1.6);
     	}
@@ -156,7 +181,7 @@ table.nav_bar {
 
 .onHoverBold {
 	&:hover {
-		font-weight:bold;
-		color:$color-text-bold1;
+		font-weight: bold;
+		color: $color-text-verybold;
 	}
 }

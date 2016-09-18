@@ -1,0 +1,117 @@
+var colorMap = new Array();
+colorMap["education"] = {"main": "#703030", "second": "#C77966"};
+colorMap["work"] = {"main": "#2F343B", "second": "#7E827A"};
+
+var resume_data = [{
+    "month_start": 9,
+    "year_start": 2009,
+    "month_end": 5,
+    "year_end": 2013,
+    "title": "Studied at <b>Lexington High School</b>",
+    "desc": "Captain of the Chess Club, member of the school Wind Ensemble and Percussion Ensemble.",
+    "class": "education"
+}, {
+    "month_start": 9,
+    "year_start": 2013,
+    "month_end": 5,
+    "year_end": 2017,
+    "title": "Studied at <b>Rensselaer Polytechnic Institute</b>",
+    "desc": "GPA: <b>3.72</b><br>Major: <b>Computer Science/Computer Systems Engineering Dual</b>",
+    "class": "education"
+},{
+    "month_start": 6,
+    "year_start": 2011,
+    "month_end": 8,
+    "year_end": 2012,
+    "title": "Worked at <b>Accordare Inc.</b>",
+    "desc": "JSP, etc",
+    "class": "work"
+},
+{
+    "month_start": 6,
+    "year_start": 2013,
+    "month_end": 8,
+    "year_end": 2013,
+    "title": "Worked at <b>Nexaweb</b>",
+    "desc": "Cloudfront/S3 and stuff",
+    "class": "work"
+},
+{
+    "month_start": 6,
+    "year_start": 2014,
+    "month_end": 12,
+    "year_end": 2015,
+    "title": "Worked at <b>GE Oil & Gas</b>",
+    "desc": "Worked on Project Blue & Flow Analytics",
+    "class": "work"
+}
+];
+
+//resume bar chart styling
+var resume_svg = d3.select("#resume_svg");
+var top_padding = 50;
+resume_svg.style("height",top_padding + resume_data.length*21);
+
+function create_resume_table(obj) {
+	var newTable = document.createElement("table");
+	newTable.className = "resume_vis_table";
+	newTable.style.backgroundColor = colorMap[obj.class]["second"];
+	var tr1 = document.createElement("tr"); newTable.appendChild(tr1);
+	var td1 = document.createElement("td"); tr1.appendChild(td1);
+	td1.innerHTML = obj.title;
+	var tr2 = document.createElement("tr"); newTable.appendChild(tr2);
+	var td2 = document.createElement("td"); tr2.appendChild(td2);
+	td2.innerHTML = obj.desc;
+	return newTable;
+}
+
+var smallest_day = 0, largest_day = 0;
+var start_year = 0; var end_year = 0;
+for (var i = 0; i < resume_data.length; i++) {
+	var tmp = (resume_data[i].year_start-1)*360 + (resume_data[i].month_start-1)*30;
+	if (tmp < smallest_day || smallest_day == 0) {
+		start_year = resume_data[i].year_start;
+		smallest_day = tmp;
+	}
+	tmp = (resume_data[i].year_end-1)*360 + (resume_data[i].month_end-1)*30;
+	if (tmp > largest_day) {
+		end_year = resume_data[i].year_end;
+		largest_day = tmp;
+	}
+
+	var newTable = create_resume_table(resume_data[i]);
+	newTable.id = ("resume_vis_" + i);
+	document.getElementById("resume_vis").appendChild(newTable);
+}
+
+var interpolate_screen = d3.interpolateNumber(0,parseInt(resume_svg.style("width")));
+
+for (var i = start_year; i <= end_year; i++) {
+	if (i*360 >= smallest_day && i*360 <= largest_day) {
+		var x_pos = interpolate_screen((i*360 - smallest_day)/(largest_day-smallest_day));
+		resume_svg.append("line").attr("class", "timeline_line")
+			.attr("style","stroke-width:2px;stroke:black;")
+			.attr("x1",x_pos).attr("y1", top_padding - 5)
+			.attr("x2",x_pos).attr("y2", top_padding - 20);
+		// resume_svg.append("text").text((i-i%100)/100).attr("x",x_pos).attr("y",0).attr("text-anchor","middle")
+		// 	.attr("style","font-size:40px; fill: #7E827A;");
+		resume_svg.append("text").text(function() {if (i%100 < 10) return ("'0" + i%100); else return "'" + i%100;})
+			.attr("style","font-size:40px; font-weight: bold; fill: #2F343B;").attr("x",x_pos).attr("y",10).attr("text-anchor","middle");
+	}
+	if (i*360 + 180 >= smallest_day && i*360 + 180 <= largest_day) {
+		var x_pos = interpolate_screen((i*360 + 180 - smallest_day)/(largest_day-smallest_day));
+		resume_svg.append("line").attr("class", "timeline_line")
+			.attr("style","stroke-width:1px;stroke:black;")
+			.attr("x1",x_pos).attr("y1", top_padding - 8)
+			.attr("x2",x_pos).attr("y2", top_padding - 16);	
+	}
+}
+
+resume_svg.selectAll("rect").data(resume_data).enter().append("rect")
+	.attr("x",function(d){return interpolate_screen(((d.month_start*30+(d.year_start-1)*360)-smallest_day)/(largest_day-smallest_day));})
+	.attr("y",function(d,i){return top_padding+i*21;})
+	.attr("width",function(d){return interpolate_screen(((12-d.month_start)*30 + (d.month_end)*30 + (d.year_end-1-d.year_start)*360)/(largest_day-smallest_day));}).attr("height",20)
+	.attr("fill",function(d){return colorMap[d.class]["main"];})
+	.append("text").text(function(d, i) { return d.title; })
+	/*.on("mouseover",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","visible");})
+	.on("mouseout",function(d,i){document.getElementById(("resume_vis_" + i)).style("visibility","hidden");})*/;

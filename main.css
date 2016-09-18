@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway);
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto|Open+Sans);
 html {
-  background-color: #E3CDA4;
+  background-color: #FCFFF5;
   position: absolute;
   width: 100%;
   height: 100%; }
@@ -9,7 +9,7 @@ svg.mainLine {
   position: fixed; }
   svg.mainLine line {
     stroke-width: 4px;
-    stroke: black; }
+    stroke: #91AA9D; }
 
 .nav_bar_div {
   display: inline-block;
@@ -19,9 +19,10 @@ svg.mainLine {
   margin-left: 3%;
   margin-right: 3%;
   margin-bottom: 10%;
-  position: fixed; }
+  position: fixed;
+  color: #91AA9D; }
   .nav_bar_div b {
-    color: #703030; }
+    color: #193441; }
 
 table.nav_bar {
   position: relative;
@@ -38,7 +39,8 @@ table.nav_bar {
     table.nav_bar td.left {
       text-align: right; }
   table.nav_bar tr:hover {
-    font-weight: bold; }
+    font-weight: bold;
+    color: #193441; }
 
 .main {
   height: 100%;
@@ -55,7 +57,8 @@ table.nav_bar {
   padding-left: 11.1%;
   padding-top: 11.1%;
   padding-right: 22.2%;
-  font-family: "Raleway", sans-serif;
+  color: #3E606F;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.56vw; }
   .panel img.aboutImg {
     /*max-width: 100%;
@@ -66,21 +69,29 @@ table.nav_bar {
     margin-bottom: 5%; }
   .panel img.contactImg {
     margin: 5%; }
+  .panel p {
+    color: #3E606F; }
+  .panel b {
+    color: #193441; }
   .panel h1 {
     font-family: "Montserrat", sans-serif;
     vertical-align: top;
     text-align: center;
     margin-top: 0;
     font-size: 4vw;
-    font-weight: bold; }
+    font-weight: bold;
+    color: #193441; }
   .panel h2 {
     font-family: "Montserrat", sans-serif;
-    font-size: 2.5vw; }
+    font-size: 2.5vw;
+    color: #193441; }
   .panel h3 {
-    font-family: "Raleway", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.5625vw; }
   .panel .smalltext {
-    font-family: "Raleway", sans-serif; }
+    font-family: "Open Sans", sans-serif; }
+    .panel .smalltext.four {
+      font-size: 1.5625vw; }
     .panel .smalltext.three {
       font-size: 0.97656vw; }
     .panel .smalltext.two {
@@ -96,6 +107,6 @@ table.nav_bar {
 
 .onHoverBold:hover {
   font-weight: bold;
-  color: #703030; }
+  color: #193441; }
 
 /*# sourceMappingURL=main.css.map */
