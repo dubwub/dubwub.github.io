@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
-import { Card, Center } from '@mantine/core';
-
+import { Badge, Box, Button, Card, Center, Table, rem } from '@mantine/core';
+import { getHotkeyHandler } from '@mantine/hooks';
+import '@mantine/core/styles.css';
+import { IconCheck, IconX } from '@tabler/icons-react';
 
 function App() {
   const [potatoes, setPotatoes] = React.useState<any>([]);
@@ -39,8 +41,12 @@ function App() {
   }
   
   function submit() {
-    setAttemptData([...attemptData, {guess: inputVal, total: potatoCount, time: new Date().getTime() / 1000 - startTime}])
+    setAttemptData([{guess: inputVal, actual: potatoCount, time: new Date().getTime() / 1000 - startTime}, ...attemptData])
     setInputVal('');
+    resetPotatoes();
+  }
+
+  if (potatoes.length === 0) {
     resetPotatoes();
   }
 
@@ -48,28 +54,49 @@ function App() {
     <Center> 
       <div>
           <div>
-            <header>
-              
-              <button onClick={() => {
+              {/* <Button variant="filled" color="gray" fullWidth onClick={() => {
                 resetPotatoes();
-              }}>Reset</button><br/>
-              <img src={'/potato_think.gif'} alt="logo" /><br/>
+              }}>Start new game</Button><br/> */}
+              <Center><img src={'/potato_think.gif'} alt="logo" /><br/></Center>
+              <Center><b>How many potatoes do I have???</b></Center>
               {
                 potatoes
               }
-              <input value={inputVal} onChange={(e) => setInputVal(e.target.value)}/>
-              <button onClick={() => submit()}>Guess</button>
-              {
-                attemptData.map((attempt: any, index: number) => {
-                  return <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>
-                    <b>Guess:</b> {attempt.guess} <br/>
-                    <b>Actual:</b> {attempt.actual} <br/>
-                    <b>Time:</b> {attempt.time} <br/>
-                    <b>Passed:</b> {attempt.guess === attempt.actual ? "Yes" : "No"}
-                  </Card>
-                })
-              }
-            </header>
+              
+              <Center>
+                <input onKeyDown={getHotkeyHandler([
+                    ['Enter', submit],
+                  ])}
+                  value={inputVal} onChange={(e) => setInputVal(e.target.value)}/>
+                <button onClick={() => submit()}>Guess</button>
+              </Center>
+              <Card shadow="sm" padding="lg" radius="md" withBorder>
+              <Table>
+                <Table.Thead>
+                  <Table.Tr>
+                    <Table.Th>Guess</Table.Th>
+                    <Table.Th>Actual</Table.Th>
+                    <Table.Th>Time</Table.Th>
+                    <Table.Th>Correct</Table.Th>
+                  </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>
+                  {
+                    attemptData.map((attempt: any, index: number) => {
+                      return <Table.Tr>
+                        <Table.Td>{attempt.guess}</Table.Td>
+                        <Table.Td>{attempt.actual}</Table.Td>
+                        <Table.Td>{Math.round(attempt.time * 1000) / 1000} seconds</Table.Td>
+                        <Table.Td>{attempt.guess == attempt.actual ? 
+                            <Badge color="lime" leftSection={<IconCheck style={{ width: rem(12), height: rem(12) }} />}></Badge> :
+                            <Badge color="red" leftSection={<IconX style={{ width: rem(12), height: rem(12) }}/>}></Badge>}</Table.Td>
+                      </Table.Tr>
+                    })
+                  }  
+                </Table.Tbody>
+              </Table>
+              </Card>
+              {/* <div style={{backgroundColor: "blue", width: 20, height: 20, padding: 5}}></div> */}
           </div>
       </div>
     </Center>
