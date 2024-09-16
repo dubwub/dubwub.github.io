@@ -45,30 +45,32 @@ function App() {
   }
 
   return (
-    <Center style={{width: '100%'}}>
-      <div className="App">
-        <header className="App-header">
-          
-          <button onClick={() => {
-            resetPotatoes();
-          }}>Reset</button><br/>
-          <img src={'/potato_think.gif'} alt="logo" /><br/>
-          {
-            potatoes
-          }
-          <input value={inputVal} onChange={(e) => setInputVal(e.target.value)}/>
-          <button onClick={() => submit()}>Guess</button>
-          {
-            attemptData.map((attempt: any) => {
-              <Card>
-                <b>Guess:</b> {attempt.guess} <br/>
-                <b>Actual:</b> {attempt.actual} <br/>
-                <b>Time:</b> {attempt.time} <br/>
-                <b>Passed:</b> {attempt.guess === attempt.actual ? "Yes" : "No"}
-              </Card>
-            })
-          }
-        </header>
+    <Center> 
+      <div>
+          <div>
+            <header>
+              
+              <button onClick={() => {
+                resetPotatoes();
+              }}>Reset</button><br/>
+              <img src={'/potato_think.gif'} alt="logo" /><br/>
+              {
+                potatoes
+              }
+              <input value={inputVal} onChange={(e) => setInputVal(e.target.value)}/>
+              <button onClick={() => submit()}>Guess</button>
+              {
+                attemptData.map((attempt: any, index: number) => {
+                  return <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>
+                    <b>Guess:</b> {attempt.guess} <br/>
+                    <b>Actual:</b> {attempt.actual} <br/>
+                    <b>Time:</b> {attempt.time} <br/>
+                    <b>Passed:</b> {attempt.guess === attempt.actual ? "Yes" : "No"}
+                  </Card>
+                })
+              }
+            </header>
+          </div>
       </div>
     </Center>
   );
